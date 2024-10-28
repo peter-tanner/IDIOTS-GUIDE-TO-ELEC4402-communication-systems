@@ -1,5 +1,9 @@
 # Idiot's guide to ELEC4402 communication systems
 
+## [Download PDF 📄](/README.pdf)
+
+It is recommended to refer to use [the PDF copy](/README.pdf) instead of whatever GitHub renders.
+
 ## License and information
 
 Notes are open-source and licensed under the GNU GPL-3.0. **You must include the [full-text of the license](/COPYING.txt) and follow its terms when using these notes or any diagrams in derivative works** (but not when printing as notes)
@@ -24,8 +28,6 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 </details>
-
-[Access a PDF render of the notes (**It is recommended to refer to this instead of the GitHub rendered page!**)](/README.pdf)
 
 I accept pull requests or suggestions but the content must not be copyrighted under a non-GPL compatible license.
 
@@ -514,7 +516,7 @@ Distance is $d=\sqrt{2E_b}$
 #### Symbol mapping
 
 ```math
-b_n:\{1,0\}\to a_n:\{1,\color{lime}-1\color{white}\}
+b_n:\{1,0\}\to a_n:\{1,\color{green}-1\color{white}\}
 ```
 
 #### 2 possible waveforms
@@ -779,7 +781,7 @@ To solve this type of question:
 
 | Linear modulation ($M$-PSK, $M$-QAM)                | NRZ unipolar encoding                              |
 | --------------------------------------------------- | -------------------------------------------------- |
-| $W=B_\text{\color{lime}abs-abs}$                    | $W=B_\text{\color{lime}abs}$                       |
+| $W=B_\text{\color{green}abs-abs}$                   | $W=B_\text{\color{green}abs}$                      |
 | $W=B_\text{abs-abs}=\frac{1+\alpha}{T}=(1+\alpha)D$ | $W=B_\text{abs}=\frac{1+\alpha}{2T}=(1+\alpha)D/2$ |
 | $D=\frac{W\text{ symbol/s}}{1+\alpha}$              | $D=\frac{2W\text{ symbol/s}}{1+\alpha}$            |
 
