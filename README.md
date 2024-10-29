@@ -1,5 +1,9 @@
 # Idiot's guide to ELEC4402 communication systems
 
+This unit allows you to bring infinite physical notes (except books borrowed from the UWA library) to all tests and the final exam. You can't rely on what material they provide in the test/exam, it is very _minimal_ to say the least. Hope this helps.
+
+If you have issues or suggestions, [raise them on GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new). I accept [pull requests](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/pulls) for fixes or suggestions but the content must not be copyrighted under a non-GPL compatible license.
+
 ## [Download PDF 📄](/README.pdf)
 
 It is recommended to refer to use [the PDF copy](/README.pdf) instead of whatever GitHub renders.
@@ -28,8 +32,6 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 </details>
-
-I accept pull requests or suggestions but the content must not be copyrighted under a non-GPL compatible license.
 
 ## Fourier transform identities
 
