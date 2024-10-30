@@ -10,7 +10,7 @@ If you have issues or suggestions, [raise them on GitHub](https://github.com/pet
 
 It is recommended to refer to use [the PDF copy](https://raw.githubusercontent.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/refs/heads/master/README.pdf) instead of whatever GitHub renders.
 
-## License and information
+### License and information
 
 Notes are open-source and licensed under the GNU GPL-3.0. **You must include the [full-text of the license](/COPYING.txt) and follow its terms when using these notes or any diagrams in derivative works** (but not when printing as notes)
 
@@ -34,6 +34,41 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 </details>
+
+## Other advice for this unit
+
+### Get more exam papers on OneSearch
+
+- You can access up to **6** more papers with this method (You normally only get the previous year's paper on LMS in week 12).
+- Either [search "Communications" and filter by type "Examination Papers"](https://onesearch.library.uwa.edu.au/discovery/search?query=any%2Ccontains%2Ccommunications&tab=Everything&search_scope=MyInst_and_CI&vid=61UWA_INST%3AUWA&facet=rtype%2Cinclude%2Cexampaper&lang=en&offset=0)
+- Or search old unit codes
+  - ELEC4301 Digital Communications and Networking
+  - ENGT4301 Digital Communications and Networking
+  - ELEC3302 Communications Systems
+  - Note that ELEC5501 Advanced Communications is a different unit.
+
+<details>
+<summary>Listing of examination papers on OneSearch</summary>
+<ul>
+<li>Communications Systems ELEC3302 Examination paper [2008 Supplementary]</li>
+<li>Communications Systems ELEC4402 Examination paper [2014 Semester 2]</li>
+<li>Communications Systems ELEC3302 Examination paper [2014 Semester 2]</li>
+<li>Communications Systems ELEC3302 Examination paper [2008 Semester 1]</li>
+<li>Digital Communications and Networking ENGT4301 Examination paper [2005 Supplementary]</li>
+<li>Digital Communications and Networking ELEC4301 Examination paper [2009 Supplementary]</li>
+</ul>
+</details>
+
+### Tests
+
+- A lot of the unit requires you to learn processes and apply them. This is quite time consuming to do during the semester and the marking of the tests will destroy your wam if you do not know the process (especially compared to signal processing and signals and systems), I do not recommend doing this unit during thesis year.
+- This formula sheet will attempt to condense all processes/formulas you may need in this unit.
+- **You do not get given a formula sheet**, so you are entirely dependent on your own notes (except for some exceptions, such as the $\text{erf}(x)$ table). So bring good notes.
+- Doing this unit after signal processing is a good idea.
+
+## Printable notes begins on next page (in PDF)
+
+<div style="page-break-after: always;"></div>
 
 ## Fourier transform identities
 
@@ -73,6 +108,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Fourier transform of continuous time periodic signal
 
 Required for some questions on **sampling**:
@@ -85,17 +122,20 @@ Transform a continuous time-periodic signal $x_p(t)=\sum_{n=-\infty}^\infty x(t-
 X_p(f)=\sum_{n=-\infty}^\infty C_n\delta(f-nf_s)\quad f_s=\frac{1}{T_s}
 ```
 
+<!-- MATH END -->
+
 Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 <!-- Remember $X_p(f)\leftrightarrow x_p(t)$ and **NOT** $\color{red}X_p(f)\leftrightarrow x_p(t-nT_s)$ -->
 
 ```math
 \begin{align*}
-    % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### $\text{rect}$ function
 
@@ -110,6 +150,8 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### White noise
 
 ```math
@@ -122,6 +164,8 @@ G_y(f)&=G(f)G_w(f)\\
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### WSS
 
 ```math
@@ -132,6 +176,8 @@ G_y(f)&=G(f)G_w(f)\\
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Ergodicity
 
 ```math
@@ -141,6 +187,8 @@ G_y(f)&=G(f)G_w(f)\\
     E[\braket{X(t)}_T]&=\frac{1}{2T}\int_{-T}^{T}x(t)dt=\frac{1}{2T}\int_{-T}^{T}m_Xdt=m_X\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 | Type                                | Normal                                                  | Mean square sense                                           |
 | ----------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
@@ -159,6 +207,8 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Other trig
 
 ```math
@@ -176,6 +226,8 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ```math
 \begin{align*}
     \cos(A+B) &= \cos (A) \cos (B)-\sin (A) \sin (B) \\
@@ -185,6 +237,8 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
     \sin(A)\sin(B) &= \frac{1}{2} (\cos (A-B)-\cos (A+B)) \\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ```math
 \begin{align*}
@@ -196,6 +250,8 @@ Note: **A WSS random process needs to be both ergodic in mean and autocorrelatio
     \cos(A)-\sin(B)&= -2 \sin \left(\frac{A}{2}+\frac{B}{2}-\frac{\pi }{4}\right) \sin \left(\frac{A}{2}-\frac{B}{2}+\frac{\pi }{4}\right) \\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ## IQ/Complex envelope
 
@@ -215,6 +271,8 @@ g_Q(t)&=A(t)\sin(\phi(t))\quad\text{Quadrature-phase component}\\
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### For transfer function
 
 ```math
@@ -224,6 +282,8 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
 \Rightarrow\tilde{h}(t)&=h_I(t)/2+jh_Q(t)/2=A(t)/2\exp{(j\phi(t))}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ## AM
 
@@ -243,6 +303,8 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 $B_T$: Signal bandwidth
 $B$: Bandwidth of modulating wave
 
@@ -257,6 +319,8 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ## FM/PM
 
 ```math
@@ -270,6 +334,8 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Bessel form and magnitude spectrum (single tone)
 
 ```math
@@ -277,6 +343,8 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
     s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right] \Leftrightarrow s(t)= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos[2\pi(f_c+nf_m)t]
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### FM signal power
 
@@ -288,6 +356,8 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
     \text{band\_index}&=1\implies f_c+1f_m,\dots\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Carson's rule to find $B$ (98% power bandwidth rule)
 
@@ -303,6 +373,8 @@ B &= \begin{cases}
 \end{cases}\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 #### $\Delta f$ of arbitrary modulating signal
 
@@ -323,6 +395,8 @@ B_T &= 2(D+1)W_m
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Complex envelope
 
 ```math
@@ -332,6 +406,8 @@ B_T &= 2(D+1)W_m
     \tilde{s}(t) &= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\exp(j2\pi f_m t)
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Band
 
@@ -356,6 +432,8 @@ B_T &= 2(D+1)W_m
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ##
 
 ## Noise performance
@@ -369,6 +447,8 @@ B_T &= 2(D+1)W_m
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ## Sampling
 
 ```math
@@ -380,6 +460,8 @@ B_T &= 2(D+1)W_m
     B&>\frac{1}{2}f_s, 2B>f_s\rightarrow\text{Aliasing}\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Procedure to reconstruct sampled signal
 
@@ -405,17 +487,20 @@ Transform a continuous time-periodic signal $x_p(t)=\sum_{n=-\infty}^\infty x(t-
 X_p(f)=\sum_{n=-\infty}^\infty C_n\delta(f-nf_s)\quad f_s=\frac{1}{T_s}
 ```
 
+<!-- MATH END -->
+
 Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 <!-- Remember $X_p(f)\leftrightarrow x_p(t)$ and **NOT** $\color{red}X_p(f)\leftrightarrow x_p(t-nT_s)$ -->
 
 ```math
 \begin{align*}
-    % C_n&=X_p(nf_s)\\
     C_n&=\frac{1}{T_s} \int_{T_s} x_p(t)\exp(-j2\pi f_s t)dt\\
        &=\frac{1}{T_s} X(nf_s)\quad\color{red}\text{(TODO: Check)}\quad\color{white}\text{$x(t-nT_s)$ is contained in the interval $T_s$}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 <!-- Reconstruct from $\bar{X_s}(f)$ within the range $[-f_s/2,f_s/2]$ -->
 
@@ -440,6 +525,8 @@ Cannot add directly due to copyright!
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Quantization noise
 
 ```math
@@ -451,6 +538,8 @@ Cannot add directly due to copyright!
     \text{SQNR(dB)}&=10\log_{10}(\text{SQNR})
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Insert here figure 8.17 from M F Mesiya - Contemporary Communication Systems (Add image to `images/quantizer.png`)
 
@@ -479,6 +568,8 @@ Cannot add directly due to copyright!
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ## Modulation and basis functions
 
 ![Constellation diagrams](./images/Constellation.drawio.svg)
@@ -493,11 +584,15 @@ Cannot add directly due to copyright!
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 #### Symbol mapping
 
 ```math
 b_n:\{1,0\}\to a_n:\{1,0\}
 ```
+
+<!-- MATH END -->
 
 #### 2 possible waveforms
 
@@ -508,6 +603,8 @@ b_n:\{1,0\}\to a_n:\{1,0\}
     &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + 0)=\frac{ {A_c}^2}{4}T_b$}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 Distance is $d=\sqrt{2E_b}$
 
@@ -521,11 +618,15 @@ Distance is $d=\sqrt{2E_b}$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 #### Symbol mapping
 
 ```math
 b_n:\{1,0\}\to a_n:\{1,\color{green}-1\color{white}\}
 ```
+
+<!-- MATH END -->
 
 #### 2 possible waveforms
 
@@ -536,6 +637,8 @@ b_n:\{1,0\}\to a_n:\{1,\color{green}-1\color{white}\}
     &\text{Since $E_b=E_\text{average}=\frac{1}{2}(\frac{ {A_c}^2}{2}\times T_b + \frac{ {A_c}^2}{2}\times T_b)=\frac{ {A_c}^2}{2}T_b$}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 Distance is $d=2\sqrt{E_b}$
 
@@ -551,6 +654,8 @@ Distance is $d=2\sqrt{E_b}$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### 4 possible waveforms
 
 ```math
@@ -562,6 +667,8 @@ Distance is $d=2\sqrt{E_b}$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 Note on energy per symbol: Since $|s_i(t)|=A_c$, have to normalize distance as follows:
 
 ```math
@@ -571,6 +678,8 @@ Note on energy per symbol: Since $|s_i(t)|=A_c$, have to normalize distance as f
           &=\sqrt{E_s/2}\left[\alpha_{1i}\varphi_1(t)+\alpha_{2i}\varphi_2(t)\right]\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 #### Signal
 
@@ -582,6 +691,8 @@ Note on energy per symbol: Since $|s_i(t)|=A_c$, have to normalize distance as f
     x(t) &= A_c[I(t)\cos(2\pi f_c t)-Q(t)\sin(2\pi f_c t)]
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Example of waveform
 
@@ -636,19 +747,19 @@ Find transfer function $h(t)$ of matched filter and apply to an input:
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### 2. Bit error rate
 
 Bit error rate (BER) from matched filter outputs and filter output noise
 
 ```math
 \begin{align*}
-    % H_\text{opt}(f)&=\max_{H(f)}\left(\frac{s_{o1}-s_{o2}}{2\sigma_o}\right)
-
-    % \text{BER}_\text{bin}&=p Q\left(\frac{s_{o1}-V_T}{\sigma_o}\right)+(1-p)Q\left(\frac{V_T-s_{o2}}{\sigma_o}\right)\text{, $p\rightarrow$Probability $s_1(t)$ sent, $V_T\rightarrow$Threshold voltage}
     Q(x)&=\frac{1}{2}-\frac{1}{2}\text{erf}\left(\frac{x}{\sqrt{2}}\right)\Leftrightarrow\text{erf}\left(\frac{x}{\sqrt{2}}\right)=1-2Q(x)\\
     E_b&=d^2=\int_{-\infty}^\infty|s_1(t)-s_2(t)|^2dt\quad\text{Energy per bit/Distance}\\
     T&=1/R_b\quad\text{$R_b$: Bitrate}\\
-    E_b&=PT=P_\text{av}/R_b\quad\text{Energy per bit}\\
+    E_b&=P_\text{av}T=P_\text{av}/R_b\quad\text{Energy per bit}\\
+    P_\text{av}&=E_b/T=E_bR_b\quad\text{Average power}\\
     P(\text{W})&=10^{\frac{P(\text{dB})}{10}}\\
     P_\text{RX}(W)&=P_\text{TX}(W)\cdot10^{\frac{P_\text{loss}(\text{dB})}{10}}\quad \text{$P_\text{loss}$ is expressed with negative sign e.g. "-130 dB"}\\
     \text{BER}_\text{MatchedFilter}&=Q\left(\sqrt{\frac{d^2}{2N_0}}\right)=Q\left(\sqrt{\frac{E_b}{2N_0}}\right)\\
@@ -656,6 +767,8 @@ Bit error rate (BER) from matched filter outputs and filter output noise
     \text{BER}_\text{polarNRZ|BPSK}&=Q\left(\sqrt{\frac{2d^2}{N_0}}\right)=Q\left(\sqrt{\frac{2E_b}{N_0}}\right)\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 <div style="page-break-after: always;"></div>
 
@@ -750,6 +863,8 @@ Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 <!--
 ```math
 \begin{align*}
@@ -774,6 +889,8 @@ TODO:
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Raised cosine (RC) pulse
 
 ![Raised cosine pulse](images/RC.drawio.svg)
@@ -782,6 +899,8 @@ TODO:
 0\leq\alpha\leq1
 ```
 
+<!-- MATH END -->
+
 ⚠ NOTE might not be safe to assume $T'=T$, if you can solve the question without $T$ then use that method.
 
 To solve this type of question:
@@ -789,22 +908,21 @@ To solve this type of question:
 1. Use the formula for $D$ below
 2. Consult the BER table below to get the BER which relates the noise of the channel $N_0$ to $E_b$ and to $R_b$.
 
-| Linear modulation ($M$-PSK, $M$-QAM)                | NRZ unipolar encoding                              |
+| Linear modulation ($M$-PSK, BPSK, $M$-QAM)          | NRZ unipolar encoding, BASK                        |
 | --------------------------------------------------- | -------------------------------------------------- |
 | $W=B_\text{\color{green}abs-abs}$                   | $W=B_\text{\color{green}abs}$                      |
 | $W=B_\text{abs-abs}=\frac{1+\alpha}{T}=(1+\alpha)D$ | $W=B_\text{abs}=\frac{1+\alpha}{2T}=(1+\alpha)D/2$ |
 | $D=\frac{W\text{ symbol/s}}{1+\alpha}$              | $D=\frac{2W\text{ symbol/s}}{1+\alpha}$            |
 
-#### Symbol set size $M$
-
 ```math
 \begin{align*}
-    D\text{ symbol/s}&=\frac{2W\text{ Hz}}{1+\alpha}\\
     R_b\text{ bit/s}&=(D\text{ symbol/s})\times(k\text{ bit/symbol})\\
     M\text{ symbol/set}&=2^k\\
     E_b&=PT=P_\text{av}/R_b\quad\text{Energy per bit}\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Nyquist stuff
 
@@ -817,6 +935,8 @@ P_r(kT)=\begin{cases}
 \end{cases}
 ```
 
+<!-- MATH END -->
+
 #### Other
 
 ```math
@@ -826,6 +946,8 @@ P_r(kT)=\begin{cases}
     T&=1/D
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Table of bandpass signalling and BER
 
@@ -875,6 +997,8 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 Entropy is **maximized** when all have an equal probability.
 
 ### Differential entropy for continuous random variables
@@ -887,6 +1011,8 @@ TODO: Cut out if not required
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 ### Mutual information
 
 Amount of entropy decrease of $x$ after observation by $y$.
@@ -896,6 +1022,8 @@ Amount of entropy decrease of $x$ after observation by $y$.
     I(x;y) &= H(x)-H(x|y)=H(y)-H(y|x)\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Channel model
 
@@ -911,6 +1039,8 @@ Horizontal, $y$: output
 \end{matrix}\right]
 ```
 
+<!-- MATH END -->
+
 ```math
 \begin{array}{c|cccc}
     P(y_j|x_i)& y_1 & y_2 & \dots & y_N \\\hline
@@ -920,6 +1050,8 @@ Horizontal, $y$: output
     x_M & p_{M1} & p_{M2} & \dots & p_{MN} \\
 \end{array}
 ```
+
+<!-- MATH END -->
 
 Input has probability distribution $p_X(a_i)=P(X=a_i)$
 
@@ -935,6 +1067,8 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 #### Fast procedure to calculate $I(y;x)$
 
 ```math
@@ -947,6 +1081,8 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
     &\text{6. Find }I(y;x)=H(x)-H(x|y)\\
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Channel types
 
@@ -967,15 +1103,21 @@ Output has probabiltiy distribution $p_Y(b_j)=P(y=b_j)$
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 #### Channel capacity of an AWGN channel
 
 ```math
 y_i=x_i+n_i\quad n_i\thicksim N(0,N_0/2)
 ```
 
+<!-- MATH END -->
+
 ```math
 C=\frac{1}{2}\log_2\left(1+\frac{P_\text{av}}{N_0/2}\right)
 ```
+
+<!-- MATH END -->
 
 #### Channel capacity of a bandwidth AWGN channel
 
@@ -989,6 +1131,8 @@ Note: Define XOR ($\oplus$) as exclusive OR, or modulo-2 addition.
     C&=W\log_2(1+\text{SNR})\quad\text{SNR}=P_s/(N_0 W)
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ## Channel code
 
@@ -1037,6 +1181,8 @@ Each generator vector is a binary string of size $n$. There are $k$ generator ve
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 A message block $\mathbf{m}$ is coded as $\mathbf{x}$ using the generation codewords in $\mathbf{G}$:
 
 ```math
@@ -1048,6 +1194,8 @@ A message block $\mathbf{m}$ is coded as $\mathbf{x}$ using the generation codew
 \mathbf{x} &= \mathbf{m}\mathbf{G}=m_0\mathbf{g}_0+m_1\mathbf{g}_1+\dots+m_{k-1}\mathbf{g}_{k-1}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 ### Systemic linear block code
 
@@ -1077,6 +1225,8 @@ Contains $k$ message bits (Copy $\mathbf{m}$ as-is) and $(n-k)$ parity bits afte
 \mathbf{b} &= \mathbf{m}\mathbf{P}\quad\text{Parity bits of $\mathbf{x}$}
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 #### Parity check matrix $\mathbf{H}$
 
@@ -1111,6 +1261,8 @@ Transpose $\mathbf{P}$ for the parity check matrix
 \end{align*}
 ```
 
+<!-- MATH END -->
+
 #### Procedure to find parity check matrix from list of codewords
 
 1. From the number of codewords, find $k=\log_2(N)$
@@ -1129,6 +1281,8 @@ Example:
     \color{magenta}1&\color{magenta}1&0&0&1\\
 \end{array}
 ```
+
+<!-- MATH END -->
 
 Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
 
@@ -1161,6 +1315,8 @@ Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
 \end{matrix}\end{array}\right]
 \end{align*}
 ```
+
+<!-- MATH END -->
 
 #### Error detection and correction
 
