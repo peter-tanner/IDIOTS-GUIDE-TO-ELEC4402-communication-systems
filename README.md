@@ -72,7 +72,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ## Fourier transform identities
 
-| **Time Function**                                                     | **Fourier Transform**                                                                                                                     |
+| Time domain $x(t)$                                                    | Frequency domain $X(f)$                                                                                                                   |
 | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | $\text{rect}\left(\frac{t}{T}\right)\quad\Pi\left(\frac{t}{T}\right)$ | $T \text{sinc}(fT)$                                                                                                                       |
 | $\text{sinc}(2Wt)$                                                    | $\frac{1}{2W}\text{rect}\left(\frac{f}{2W}\right)\quad\frac{1}{2W}\Pi\left(\frac{f}{2W}\right)$                                           |
@@ -83,13 +83,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 | $\delta(t)$                                                           | $1$                                                                                                                                       |
 | $1$                                                                   | $\delta(f)$                                                                                                                               |
 | $\delta(t - t_0)$                                                     | $\exp(-j2\pi f t_0)$                                                                                                                      |
-| $g(t-a)$                                                              | $\exp(-j2\pi fa)G(f)\quad\text{shift property}$                                                                                           |
-| $g(bt)$                                                               | $\frac{G(f/b)}{\|b\|}\quad\text{scaling property}$                                                                                        |
-| $g(bt-a)$                                                             | $\frac{1}{\|b\|}\exp(-j2\pi a(f/b))\cdot G(f/b)\quad\text{shift and scale}$                                                               |
-| $\frac{d}{dt}g(t)$                                                    | $j2\pi fG(f)\quad\text{differentiation property}$                                                                                         |
-| $G(t)$                                                                | $g(-f)\quad\text{duality property}$                                                                                                       |
-| $g(t)h(t)$                                                            | $G(f)*H(f)$                                                                                                                               |
-| $g(t)*h(t)$                                                           | $G(f)H(f)$                                                                                                                                |
 | $\exp(j2\pi f_c t)$                                                   | $\delta(f - f_c)$                                                                                                                         |
 | $\cos(2\pi f_c t)$                                                    | $\frac{1}{2}[\delta(f - f_c) + \delta(f + f_c)]$                                                                                          |
 | $\sin(2\pi f_c t)$                                                    | $\frac{1}{2j} [\delta(f - f_c) - \delta(f + f_c)]$                                                                                        |
@@ -97,6 +90,25 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 | $\frac{1}{\pi t}$                                                     | $-j \text{sgn}(f)$                                                                                                                        |
 | $u(t)$                                                                | $\frac{1}{2} \delta(f) + \frac{1}{j2\pi f}$                                                                                               |
 | $\sum_{n=-\infty}^{\infty} \delta(t - nT_0)$                          | $\frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)=f_0 \sum_{n=-\infty}^{\infty} \delta\left(f - n f_0\right)$ |
+
+| Time domain $x(t)$              | Frequency domain $X(f)$                          | Property                  |
+| ------------------------------- | ------------------------------------------------ | ------------------------- |
+| $g(t-a)$                        | $\exp(-j2\pi fa)G(f)$                            | Time shifting             |
+| $\exp(-j2\pi f_c t)g(t)$        | $G(f-f_c)$                                       | Frequency shifting        |
+| $g(bt)$                         | $\frac{G(f/b)}{\|b\|}$                           | Time scaling              |
+| $g(bt-a)$                       | $\frac{1}{\|b\|}\exp(-j2\pi a(f/b))\cdot G(f/b)$ | Time scaling and shifting |
+| $\frac{d}{dt}g(t)$              | $j2\pi fG(f)\quad$                               | Differentiation wrt time  |
+| $g^*(t)$                        | $G^*(-f)$                                        | Conjugate functions       |
+| $G(t)$                          | $g(-f)$                                          | Duality                   |
+| $\int_{-\infty}^t g(\tau)d\tau$ | $\frac{1}{j2\pi f}G(f)+\frac{G(0)}{2}\delta(f)$  | Integration wrt time      |
+| $g(t)h(t)$                      | $G(f)*H(f)$                                      | Time multiplication       |
+| $g(t)*h(t)$                     | $G(f)H(f)$                                       | Time convolution          |
+| $ag(t)+bh(t)$                   | $aG(f)+bH(f)$                                    | Linearity $a,b$ constants |
+
+| Description                         | Property          |
+| ----------------------------------- | ----------------- |
+| $g(0)=\int_{-\infty}^\infty G(f)df$ | Area under $G(f)$ |
+| $G(0)=\int_{-\infty}^\infty G(t)dt$ | Area under $g(t)$ |
 
 ```math
 \begin{align*}
@@ -1014,6 +1026,8 @@ TODO: Cut out if not required
 <!-- MATH END -->
 
 ### Mutual information
+
+![Mutual information](images/MutualInformation.drawio.svg)
 
 Amount of entropy decrease of $x$ after observation by $y$.
 
