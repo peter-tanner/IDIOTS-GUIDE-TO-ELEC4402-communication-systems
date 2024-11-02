@@ -2,9 +2,18 @@
 
 <style>
 @media print{
-   .copyrighted{
-       display: none !important;
-   }
+    .copyrighted{
+        display: none !important;
+    }
+    h2, h3, h4, h5 {
+        page-break-inside: avoid;
+    }
+    h2::after, h3::after, h4::after, h5::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+    }
 }
 </style>
 
@@ -440,6 +449,9 @@ B &= \begin{cases}
 
 <!-- MATH END -->
 
+<!-- ADJUST ACCORDING TO PDF OUTPUT -->
+<div style="page-break-after: always;"></div>
+
 ## Noise performance
 
 Coherent detection system.
@@ -764,6 +776,9 @@ Remember that $T=2T_b$
 | $I(t)$ (Odd, 1st bits)  | ![QPSK bits](/images/qpsk-it.svg)   |
 | $Q(t)$ (Even, 2nd bits) | ![QPSK bits](/images/qpsk-qt.svg)   |
 
+<!-- ADJUST ACCORDING TO PDF OUTPUT -->
+<div style="page-break-after: always;"></div>
+
 ## Matched filter
 
 ### 1. Filter function
@@ -1005,6 +1020,9 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 - Minimum distance between any two point
 - Different from bit error since a symbol can contain multiple bits
 
+<!-- ADJUST ACCORDING TO PDF OUTPUT -->
+<div style="page-break-after: always;"></div>
+
 ## Information theory
 
 ### Entropy for discrete random variables
@@ -1175,6 +1193,9 @@ C=\frac{1}{2}\log_2\left(1+\frac{P_\text{av}}{N_0/2}\right)
 ```
 
 <!-- MATH END -->
+
+<!-- ADJUST ACCORDING TO PDF OUTPUT -->
+<div style="page-break-after: always;"></div>
 
 ## Channel code
 
