@@ -1,27 +1,5 @@
 # Idiot's guide to ELEC4402 communication systems
 
-<style>
-@media print{
-     .info-text, h1 {
-        display: none !important;
-    }
-    h2, h3, h4, h5 {
-        page-break-inside: avoid;
-    }
-    h2::after, h3::after, h4::after, h5::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-bottom: -100px;
-    }
-}
-@media screen {
-    .short-info {
-        display: none;
-    }
-}
-</style>
-
 <div class="info-text">
 
 <!-- PRINT NOTE: Use 0.20 margins all around, scale: fit to page width, and no headers or backgrounds -->
@@ -36,7 +14,7 @@ It is recommended to refer to use [the PDF copy](https://raw.githubusercontent.c
 
 ### License and information
 
-Notes are open-source and licensed under the GNU GPL-3.0. **You must include the [full-text of the license](/COPYING.txt) and follow its terms when using these notes or any diagrams in derivative works** (but not when printing as notes)
+Notes are open-source and licensed under the GNU GPL-3.0. **You must include the [full-text of the license](COPYING.txt) and follow its terms when using these notes or any diagrams in derivative works** (but not when printing as notes)
 
 Copyright (C) 2024 Peter Tanner
 
@@ -784,11 +762,11 @@ tBitstream[{1, 1, -1, -1, -1, -1, 1, 1, -1, -1}, 1, "Q(t)"]
 
 Remember that $T=2T_b$
 
-|                         |                                     |
-| ----------------------- | ----------------------------------- |
-| $b_n$                   | ![QPSK bits](/images/qpsk-bits.svg) |
-| $I(t)$ (Odd, 1st bits)  | ![QPSK bits](/images/qpsk-it.svg)   |
-| $Q(t)$ (Even, 2nd bits) | ![QPSK bits](/images/qpsk-qt.svg)   |
+|                         |                                    |
+| ----------------------- | ---------------------------------- |
+| $b_n$                   | ![QPSK bits](images/qpsk-bits.svg) |
+| $I(t)$ (Odd, 1st bits)  | ![QPSK bits](images/qpsk-it.svg)   |
+| $Q(t)$ (Even, 2nd bits) | ![QPSK bits](images/qpsk-qt.svg)   |
 
 <!-- ADJUST ACCORDING TO PDF OUTPUT -->
 <div style="page-break-after: always;"></div>
@@ -1407,3 +1385,25 @@ Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
 - Transfer function in complex envelope form $\tilde{h}(t)$ should be divided by two.
 - Convolutions: do not forget width when using graphical method
 - todo: add more items to check
+
+<style>
+@media print{
+    .copyrighted, .info-text, h1 {
+        display: none !important;
+    }
+    h2, h3, h4, h5 {
+        page-break-inside: avoid;
+    }
+    h2::after, h3::after, h4::after, h5::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+    }
+}
+@media screen {
+    .short-info {
+        display: none;
+    }
+}
+</style>
