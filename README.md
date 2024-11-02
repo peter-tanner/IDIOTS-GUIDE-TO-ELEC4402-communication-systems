@@ -2,7 +2,7 @@
 
 <style>
 @media print{
-    .copyrighted{
+     .info-text, h1 {
         display: none !important;
     }
     h2, h3, h4, h5 {
@@ -15,7 +15,14 @@
         margin-bottom: -100px;
     }
 }
+@media screen {
+    .short-info {
+        display: none;
+    }
+}
 </style>
+
+<div class="info-text">
 
 <!-- PRINT NOTE: Use 0.20 margins all around, scale: fit to page width, and no headers or backgrounds -->
 
@@ -83,9 +90,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 - **You do not get given a formula sheet**, so you are entirely dependent on your own notes (except for some exceptions, such as the $\text{erf}(x)$ table). So bring good notes.
 - Doing this unit after signal processing is a good idea.
 
-## Printable notes begins on next page (in PDF)
-
 <div style="page-break-after: always;"></div>
+</div>
+
+<div class="short-info">
+
+**[https://www.petertanner.dev/posts/Idiots-guide-to-ELEC4402-Communications-Systems/](https://www.petertanner.dev/posts/Idiots-guide-to-ELEC4402-Communications-Systems/)**
+
+**Notes are open-source and licensed under the [GNU GPL-3.0](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/blob/master/COPYING.txt). Suggest any corrections or changes on [GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems).**
+
+</div>
 
 ## Fourier transform identities and properties
 
