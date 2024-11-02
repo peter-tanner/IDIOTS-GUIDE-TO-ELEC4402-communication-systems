@@ -317,11 +317,11 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
 
 ```math
 \begin{align*}
+    x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right], \\
+    &\text{where $m(t)=A_m\hat m(t)$ and $\hat m(t)$ is the normalized modulating signal}\\
     m_a &= \frac{\min_t|k_a m(t)|}{A_c} \quad\text{$k_a$ is the amplitude sensitivity ($\text{volt}^{-1}$), $m_a$ is the modulation index.}\\
     m_a &= \frac{A_\text{max}-A_\text{min}}{A_\text{max}+A_\text{min}}\quad\text{ (Symmetrical $m(t)$)}\\
     m_a&=k_a A_m \quad\text{ (Symmetrical $m(t)$)}\\
-    x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right], \\
-    &\text{where $m(t)=A_m\hat m(t)$ and $\hat m(t)$ is the normalized modulating signal}\\
     P_c &=\frac{ {A_c}^2}{2}\quad\text{Carrier power}\\
     P_x &=\frac{1}{4}{m_a}^2{A_c}^2\\
     \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_x}{P_x+P_c}\\
@@ -354,11 +354,11 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
     s(t) &= A_c\cos\left[2\pi f_c t + k_p m(t)\right]\quad\text{Phase modulated (PM)}\\
     s(t) &= A_c\cos(\theta_i(t))=A_c\cos\left[2\pi f_c t + 2 \pi k_f \int_{-\infty}^t m(\tau) d\tau\right]\quad\text{Frequency modulated (FM)}\\
     s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right]\quad\text{FM single tone}\\
-    f_i(t) &= \frac{1}{2\pi}\frac{d}{dt}\theta_i(t)\quad\text{Instantaneous frequency from instantaneous phase}\\
-    \Delta f&=\beta f_m=k_f A_m f_m = \max_t(k_f m(t))- \min_t(k_f m(t))\quad\text{Maximum frequency deviation}\\
-    \Delta f&=\max_t(f_i(t))- \min_t(f_i(t))\quad\text{Maximum frequency deviation}\\
-    \beta&=\frac{\Delta f}{f_m}=k_f A_m\quad\text{Modulation index}\\
-    D&=\frac{\Delta f}{W_m}\quad\text{Deviation ratio, where $W_m$ is bandwidth of $m(t)$ (Use FT)}\\
+    f_i(t) &= \frac{1}{2\pi}\frac{d}{dt}\theta_i(t)=f_c+k_f m(t)=f_c+\Delta f_\text{max}\hat m(t)\quad\text{Instantaneous frequency}\\
+    \Delta f_\text{max}&=\max_t|f_i(t)-f_c|=k_f \max_t |m(t)|\quad\text{Maximum frequency deviation}\\
+    \Delta f_\text{max}&=k_f A_m\quad\text{Maximum frequency deviation (sinusoidal)}\\
+    \beta&=\frac{\Delta f_\text{max}}{f_m}\quad\text{Modulation index}\\
+    D&=\frac{\Delta f_\text{max}}{W_m}\quad\text{Deviation ratio, where $W_m$ is bandwidth of $m(t)$ (Use FT)}\\
 \end{align*}
 ```
 
@@ -392,12 +392,11 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 ```math
 \begin{align*}
 B &= 2Mf_m = 2(\beta + 1)f_m\\
-    &= 2(\Delta f+f_m)\\
-    &= 2(k_f A_m+f_m)\\
+    &= 2(\Delta f_\text{max}+f_m)\\
     &= 2(D+1)W_m\\
 B &= \begin{cases}
-    2(\Delta f+f_m) & \text{FM, sinusoidal message}\\
-    2(\Delta\phi + 1)f_m & \text{PM, sinusoidal message}
+    2(\Delta f_\text{max}+f_m)=2(\Delta f_\text{max}+W_m) & \text{FM, sinusoidal message}\\
+    2(\Delta\phi_\text{max} + 1)f_m=2(\Delta \phi_\text{max}+1)W_m & \text{PM, sinusoidal message}
 \end{cases}\\
 \end{align*}
 ```
