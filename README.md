@@ -130,7 +130,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     \text{sgn}(t) &= \begin{cases} +1, & t > 0 \\ 0, & t = 0 \\ -1, & t < 0 \end{cases}&\text{Signum Function}\\
     \text{sinc}(2Wt) &= \frac{\sin(2\pi W t)}{2\pi W t}&\text{sinc Function}\\
     \text{rect}(t) = \Pi(t) &= \begin{cases} 1, & -0.5 < t < 0.5 \\ 0, & \lvert t \rvert > 0.5 \end{cases}&\text{Rectangular/Gate Function}\\
-    \text{tri}(t/T) &= \begin{cases} 1 - \frac{|t|}{T}, & \lvert t\rvert < T \\ 0, & \lvert t \rvert > T \end{cases}=\Pi(t/T)*\Pi(t/T)&\text{Triangle Function}\\
+    \text{tri}(t/T) &= \begin{cases} 1 - \frac{|t|}{T}, & \lvert t\rvert < T \\ 0, & \lvert t \rvert \geq T \end{cases}=\frac{1}{T}\Pi(t/T)*\Pi(t/T)&\text{Triangle Function}\\
     g(t)*h(t)=(g*h)(t)&=\int_\infty^\infty g(\tau)h(t-\tau)d\tau&\text{Convolution}\\
 \end{align*}
 ```
@@ -165,48 +165,29 @@ Calculate $C_n$ coefficient as follows from $x_p(t)$:
 
 ### Shape functions
 
-| $\text{rect}$ function          | $\text{tri}$ function |
-| ------------------------------- | --------------------- |
-| ![rect](images/rect.drawio.svg) | TODO: Add graphic.    |
+![rect and tri functions](images/rect.drawio.svg)
 
-Tri placeholder: For $\text{tri}(t/T)=1-\|t\|/T$, Intersects $x$ axis at $-T$ and $T$ and $y$ axis at $1$.
+### Random processes examples
 
-### Bessel function
-
-```math
+$$
 \begin{align*}
-    \sum_{n\in\mathbb{Z}}{J_n}^2(\beta)&=1\\
-    J_n(\beta)&=(-1)^nJ_{-n}(\beta)
+    &\text{Example: separate RV from expression}\\
+    X(t) &= A\cos(2\pi f_c t)\quad A\thicksim \mathcal{N}(\mu=5,\sigma^2=1)\\
+    \implies E[X(t)] &= E[A\cos(2\pi f_c t)] = E[A]\cos(2\pi f_c t) = 5\cos(2\pi f_c t)\\
+    &\text{Example: random phase}\\
+    X(t) &= B\cos(2\pi f_c t+\theta)\quad \theta\thicksim \mathcal{U}(0,2\pi)\\
+    \implies E[X(t)] &= E[B\cos(2\pi f_c t+\theta)] = B\int_0^{2\pi}\underbrace{\frac{1}{2\pi}}_{\text{uniform}}\cos(2\pi f_c t+\theta)d\theta=0
 \end{align*}
-```
+$$
 
-<!-- MATH END -->
+### Wide sense stationary (WSS)
 
-### White noise
+Two conditions for WSS:
 
-```math
-\begin{align*}
-R_W(\tau)&=\frac{N_0}{2}\delta(\tau)=\frac{kT}{2}\delta(\tau)=\sigma^2\delta(\tau)\\
-G_w(f)&=\frac{N_0}{2}\\
-N_0&=kT\\
-G_y(f)&=|H(f)|^2G_w(f)\\
-G_y(f)&=G(f)G_w(f)\\
-\end{align*}
-```
-
-<!-- MATH END -->
-
-### WSS
-
-```math
-\begin{align*}
-    \mu_X(t) &= \mu_X\text{ Constant}\\
-    R_{XX}(t_1,t_2)&=R_X(t_1-t_2)=R_X(\tau)\\
-    E[X(t_1)X(t_2)]&=E[X(t)X(t+\tau)]
-\end{align*}
-```
-
-<!-- MATH END -->
+| Constant mean                      | Autocorrelation only dependent on time difference |
+| ---------------------------------- | ------------------------------------------------- |
+| $\mu_X(t) = \mu_X\text{ Constant}$ | $R_{XX}(t_1,t_2)=R_X(t_1-t_2)=R_X(\tau)$          |
+| $\mu_X(t)=E[X(t)]$                 | $E[X(t_1)X(t_2)]=E[X(t)X(t+\tau)]$                |
 
 ### Ergodicity
 
@@ -220,10 +201,10 @@ G_y(f)&=G(f)G_w(f)\\
 
 <!-- MATH END -->
 
-| Type                                | Normal                                                  | Mean square sense                                           |
-| ----------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
-| ergodic in mean                     | $$\lim_{T\to\infty}\braket{X(t)}_T=m_X(t)=m_X$$         | $$\lim_{T\to\infty}\text{VAR}[\braket{X(t)}_T]=0$$          |
-| ergodic in autocorrelation function | $$\lim_{T\to\infty}\braket{X(t+\tau)X(t)}_T=R_X(\tau)$$ | $$\lim_{T\to\infty}\text{VAR}[\braket{X(t+\tau)X(t)}_T]=0$$ |
+| Type                                | Normal                                                | Mean square sense                                         |
+| ----------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| ergodic in mean                     | $\lim_{T\to\infty}\braket{X(t)}_T=m_X(t)=m_X$         | $\lim_{T\to\infty}\text{VAR}[\braket{X(t)}_T]=0$          |
+| ergodic in autocorrelation function | $\lim_{T\to\infty}\braket{X(t+\tau)X(t)}_T=R_X(\tau)$ | $\lim_{T\to\infty}\text{VAR}[\braket{X(t+\tau)X(t)}_T]=0$ |
 
 Note: **A WSS random process needs to be both ergodic in mean and autocorrelation to be considered an ergodic process**
 
@@ -317,19 +298,19 @@ h(t)&=h_I(t)\cos(2\pi f_c t)-h_Q(t)\sin(2\pi f_c t)\\
 
 ## AM
 
-### CAM
+### Conventional AM modulation (CAM)
 
 ```math
 \begin{align*}
-    x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right], \\
+    x(t)&=A_c\cos(2\pi f_c t)\left[1+k_a m(t)\right]=A_c\cos(2\pi f_c t)\left[1+m_a m(t)/A_c\right]\quad\text{CAM signal}\\
     &\text{where $m(t)=A_m\hat m(t)$ and $\hat m(t)$ is the normalized modulating signal}\\
     m_a &= \frac{|\min_t(k_a m(t))|}{A_c} \quad\text{$k_a$ is the amplitude sensitivity ($\text{volt}^{-1}$), $m_a$ is the modulation index.}\\
     m_a &= \frac{A_\text{max}-A_\text{min}}{A_\text{max}+A_\text{min}}\quad\text{ (Symmetrical $m(t)$)}\\
     m_a&=k_a A_m \quad\text{ (Symmetrical $m(t)$)}\\
     P_c &=\frac{ {A_c}^2}{2}\quad\text{Carrier power}\\
-    P_x &=\frac{1}{4}{m_a}^2{A_c}^2\\
-    \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_x}{P_x+P_c}\\
-    B_T&=2f_m=2B
+    P_s &=\frac{1}{4}{m_a}^2{A_c}^2\quad\text{Signal power, \textbf{total} of all 4 sideband power, \textbf{single-tone} case}\\
+    \eta&=\frac{\text{Signal Power}}{\text{Total Power}}=\frac{P_s}{P_s+P_c}=\frac{P_s}{P_x}\quad\text{Power efficiency}\\
+    B_T&=2f_m=2B\\
 \end{align*}
 ```
 
@@ -340,7 +321,7 @@ $B$: Bandwidth of modulating wave
 
 Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
-### DSB-SC
+### Double sideband suppressed carrier (DSB-SC)
 
 ```math
 \begin{align*}
@@ -368,11 +349,26 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
 <!-- MATH END -->
 
-### Bessel form and magnitude spectrum (single tone)
+### Bessel function
 
 ```math
 \begin{align*}
-    s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right] \Leftrightarrow s(t)= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos[2\pi(f_c+nf_m)t]
+    J_n(\beta)&=\begin{cases}
+        J_{-n}(\beta) & \text{$n$ is even}\\
+        -J_{-n}(\beta) & \text{$n$ is odd}
+    \end{cases}\\
+    1&=\sum_{n\in\mathbb{Z}}{J_n}^2(\beta)&\text{Conservation of power}\\
+\end{align*}
+```
+
+<!-- MATH END -->
+
+### Bessel form of FM signal
+
+```math
+\begin{align*}
+    s(t) &= A_c\cos\left[2\pi f_c t + \beta \sin(2\pi f_m t)\right]\\
+    \Longleftrightarrow s(t) &= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\cos[2\pi(f_c+nf_m)t]
 \end{align*}
 ```
 
@@ -382,10 +378,12 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
 ```math
 \begin{align*}
-    P_\text{av}&=\frac{ {A_c}^2}{2}\\
-    P_\text{band\_index}&=\frac{ {A_c}^2{J_\text{band\_index}}^2(\beta)}{2}\\
-    \text{band\_index}&=0\implies f_c+0f_m\\
-    \text{band\_index}&=1\implies f_c+1f_m,\dots\\
+    P_\text{av}&=\frac{ {A_c}^2}{2}&\text{Av. power of full signal}\\
+    P_\text{i}&=\frac{ {A_c}^2|{J_\text{i}}(\beta)|^2}{2}&\text{Av. power of band $i$}\\
+    i=0&\implies f_c+0f_m&\text{Middle band}\\
+    i=1&\implies f_c+1f_m&\text{1st sideband}\\
+    i=-1&\implies f_c-1f_m&\text{-1st sideband}\\
+    &\dots\\
 \end{align*}
 ```
 
@@ -395,35 +393,31 @@ Overmodulation (resulting in phase reversals at crossing points): $m_a>1$
 
 ```math
 \begin{align*}
-B &= 2Mf_m = 2(\beta + 1)f_m\\
-    &= 2(\Delta f_\text{max}+f_m)\\
-    &= 2(D+1)W_m\\
+B &= 2(\beta + 1)f_m\\
+B &= 2(\Delta f_\text{max}+f_m)\\
+B &= 2(D+1)W_m\\
 B &= \begin{cases}
     2(\Delta f_\text{max}+f_m)=2(\Delta f_\text{max}+W_m) & \text{FM, sinusoidal message}\\
     2(\Delta\phi_\text{max} + 1)f_m=2(\Delta \phi_\text{max}+1)W_m & \text{PM, sinusoidal message}
-\end{cases}\\
+\end{cases}\\\\
+    & D<1,\beta<1 \implies \text{Narrowband}\quad D>1,\beta>1\implies \text{Wideband}
 \end{align*}
 ```
 
 <!-- MATH END -->
 
-### Complex envelope
+### Complex envelope of a FM signal
 
 ```math
 \begin{align*}
-    s(t)&=A_c\cos(2\pi f_c t+\beta\sin(2\pi f_m t)) \Leftrightarrow \tilde{s}(t) = A_c\exp(j\beta\sin(2\pi f_m t))\\
+    s(t)&=A_c\cos(2\pi f_c t+\beta\sin(2\pi f_m t))\\
+    \Longleftrightarrow \tilde{s}(t) &= A_c\exp(j\beta\sin(2\pi f_m t))\\
     s(t)&=\text{Re}[\tilde{s}(t)\exp{(j2\pi f_c t)}]\\
     \tilde{s}(t) &= A_c\sum_{n=-\infty}^{\infty}J_n(\beta)\exp(j2\pi f_m t)
 \end{align*}
 ```
 
 <!-- MATH END -->
-
-### Band
-
-| Narrowband    | Wideband      |
-| ------------- | ------------- |
-| $D<1,\beta<1$ | $D>1,\beta>1$ |
 
 ## Power, energy and autocorrelation
 
@@ -438,18 +432,27 @@ B &= \begin{cases}
     P_x&={\sigma_x}^2=\lim_{t\to\infty}\frac{1}{T}\int_{-T/2}^{T/2}|x(t)|^2dt\quad\text{For zero mean}\\
     P[A\cos(2\pi f t+\phi)]&=\frac{A^2}{2}\quad\text{Power of sinusoid }\\
     E_x&=\int_{-\infty}^{\infty}|x(t)|^2dt=\int_{-\infty}^{\infty}|X(f)|^2df\quad\text{Parseval's theorem}\\
-    R_x(\tau) &= \mathfrak{F}(G_x(f))\quad\text{PSD to Autocorrelation}
+    R_x(\tau) &= \mathfrak{F}(G_x(f))\quad\text{PSD to Autocorrelation}\\
+    P_x &= R_x(0)\quad\text{Average power of WSS process $x(t)$}\\
 \end{align*}
 ```
 
 <!-- MATH END -->
 
-<!-- ADJUST ACCORDING TO PDF OUTPUT -->
-<div style="page-break-after: always;"></div>
+### White noise
+
+```math
+\begin{align*}
+R_W(\tau)&=\frac{N_0}{2}\delta(\tau)=\frac{kT}{2}\delta(\tau)=\sigma^2\delta(\tau)\\
+G_w(f)&=\frac{N_0}{2}\\
+\end{align*}
+```
+
+<!-- MATH END -->
 
 ## Noise performance
 
-Coherent detection system.
+<!-- Coherent detection system.
 
 ```math
 \begin{align*}
@@ -458,7 +461,7 @@ Coherent detection system.
          &= \frac{1}{2}m(t)+\frac{1}{2}\cos(4 f_c t+2\theta)\\
     \implies S_u(f) &= \left(\frac{1}{2}\right)^2S_u(f)\quad\text{After LPF.}
 \end{align*}
-```
+``` -->
 
 <!-- MATH END -->
 
@@ -557,6 +560,7 @@ Do not transmit more than $2B$ samples per second over a channel of $B$ bandwidt
 ### Insert here figure 8.3 from M F Mesiya - Contemporary Communication Systems (Add image to `images/sampling.png`)
 
 Cannot add directly due to copyright!
+**TODO: Make an open source replacement for this diagram [Send a PR to GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new).**
 
 <img src="copyrighted_images/sampling.png" alt="sampling" class="copyrighted">
 
@@ -566,7 +570,7 @@ Cannot add directly due to copyright!
 
 ```math
 \begin{align*}
-    \Delta &= \frac{x_\text{Max}-x_\text{Min}}{2^k} \quad\text{for $k$-bit quantizer (V/lsb)}\\
+    \Delta &= \frac{x_\text{Max}-x_\text{Min}}{2^k} \quad\text{for $k$-bit quantizer (V/lsb)}\quad\text{Quantizer step size $\Delta$}\\
 \end{align*}
 ```
 
@@ -578,9 +582,10 @@ Cannot add directly due to copyright!
 \begin{align*}
     e &:= y-x\quad\text{Quantization error}\\
     \mu_E &= E[E] = 0\quad\text{Zero mean}\\
-    {\sigma_E}^2&=E[E^2]-0^2=\int_{-\Delta/2}^{\Delta/2}e^2\times\left(\frac{1}{\Delta}\right) de\quad\text{Where $E\thicksim 1/\Delta$ uniform over $(-\Delta/2,\Delta/2)$}\\
-    \text{SQNR}&=\frac{\text{Signal power}}{\text{Quantization noise}}\\
-    \text{SQNR(dB)}&=10\log_{10}(\text{SQNR})
+    P_E&={\sigma_E}^2=\frac{\Delta^2}{12}=2^{-2m}V^2/3\quad\text{Uniformly distributed error}\\
+    \text{SQNR}&=\frac{\text{Signal power}}{\text{Quantization noise power}}=\frac{P_x}{P_E}\\
+    \text{SQNR(dB)}&=10\log_{10}(\text{SQNR})\\
+    m\to m+A\text{ bits}&\implies \text{newSQNR(dB)}=\text{SQNR(dB)}+6A\text{ dB}
 \end{align*}
 ```
 
@@ -589,6 +594,7 @@ Cannot add directly due to copyright!
 ### Insert here figure 8.17 from M F Mesiya - Contemporary Communication Systems (Add image to `images/quantizer.png`)
 
 Cannot add directly due to copyright!
+**TODO: Make an open source replacement for this diagram [Send a PR to GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new).**
 
 <img src="copyrighted_images/quantizer.png" alt="quantizer" class="copyrighted">
 
@@ -613,6 +619,8 @@ Cannot add directly due to copyright!
     G_\text{unipolarRZ}(f)&=\frac{A^2}{16} \left(\sum _{l=-\infty }^{\infty } \delta \left(f-\frac{l}{T_b}\right) \left| \text{sinc}(\text{duty} \times l) \right| {}^2+T_b \left| \text{sinc}\left(\text{duty} \times f T_b\right) \right| {}^2\right), \text{NB}_0=2R_b
 \end{align*}
 ```
+
+**TODO: Someone please make plots of the PSD for all line code types in Mathematica or Python! [Send a PR to GitHub](https://github.com/peter-tanner/IDIOTS-GUIDE-TO-ELEC4402-communication-systems/issues/new).**
 
 <!-- MATH END -->
 
@@ -826,6 +834,8 @@ Bit error rate (BER) from matched filter outputs and filter output noise
 
 ### $Q(x)$ function
 
+You should use [$\text{erf}$ function table](#function-1) instead in exams using the identity $Q(x)=\frac{1}{2}-\frac{1}{2}\text{erf}\left(\frac{x}{\sqrt{2}}\right)$. Use this for validation.
+
 | $x$    | $Q(x)$     | $x$    | $Q(x)$                  | $x$    | $Q(x)$                   | $x$    | $Q(x)$                   |
 | ------ | ---------- | ------ | ----------------------- | ------ | ------------------------ | ------ | ------------------------ |
 | $0.00$ | $0.5$      | $2.30$ | $0.010724$              | $4.55$ | $2.6823 \times 10^{-6}$  | $6.80$ | $5.231 \times 10^{-12}$  |
@@ -879,6 +889,10 @@ Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
 
 ### $\text{erf}(x)$ function
 
+```math
+Q(x)=\frac{1}{2}-\frac{1}{2}\text{erf}(\frac{x}{\sqrt{2}})
+```
+
 | $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ | $x$    | $\text{erf}(x)$ |
 | ------ | --------------- | ------ | --------------- | ------ | --------------- |
 | $0.00$ | $0.00000$       | $0.75$ | $0.71116$       | $1.50$ | $0.96611$       |
@@ -898,6 +912,15 @@ Adapted from table 6.1 M F Mesiya - Contemporary Communication Systems
 | $0.70$ | $0.67780$       | $1.45$ | $0.95970$       |        |                 |
 
 \*\*The value of $\text{erf}(3.30)$ should be $\approx0.999997$ instead, but this value is quoted in the formula table.
+
+### $Q(x)$ fast reference
+
+Using identity.
+
+| $x$         | $Q(x)$    |
+| ----------- | --------- |
+| $\sqrt{2}$  | $0.07865$ |
+| $2\sqrt{2}$ | $0.00234$ |
 
 <div style="page-break-after: always;"></div>
 
@@ -1027,6 +1050,16 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 
 ## Information theory
 
+### Stats
+
+```math
+\begin{align*}
+    P(A|B) &= \frac{P(B|A)P(A)}{P(B)} = \frac{P(A,B)}{P(B)}\\
+\end{align*}
+```
+
+<!-- MATH END -->
+
 ### Entropy for discrete random variables
 
 ```math
@@ -1047,17 +1080,24 @@ Adapted from table 11.4 M F Mesiya - Contemporary Communication Systems
 
 Entropy is **maximized** when all have an equal probability.
 
-### Differential entropy for continuous random variables
+### Transition probability diagram
 
-TODO: Cut out if not required
+Example for binary erasure channel where $X$ is input and $Y$ is output:
 
-```math
+![Binary erasure channel David Eppstein, Public domain, via Wikimedia Commons](images/Binary_erasure_channel.svg)
+
+Equivalent to:
+
+$$
 \begin{align*}
-    h(x) &= -\int_\mathbb{R}f_X(x)\log_2(f_X(x))dx
+    P[Y=0|X=0] &= 1-p\\
+    P[Y=e|X=0] &= p\\
+    P[Y=1|X=1] &= 1-p\\
+    P[Y=e|X=1] &= p\\
+    P[X=0|Y=0] &= 0\quad\text{Note the direction}\\
+    P[Y=0] &= P[Y=0|X=0] P[X=0]
 \end{align*}
-```
-
-<!-- MATH END -->
+$$
 
 ### Mutual information
 
@@ -1076,7 +1116,8 @@ Amount of entropy decrease of $x$ after observation by $y$.
 ### Channel model
 
 Vertical, $x$: input\
-Horizontal, $y$: output
+Horizontal, $y$: output\
+Remember $\mathbf{P}$ is a matrix where each element is $P(y_j|x_i)$
 
 ```math
 \mathbf{P}=\left[\begin{matrix}
@@ -1123,14 +1164,24 @@ Output has probability distribution $p_Y(b_j)=P(y=b_j)$
 \begin{align*}
     &\text{1. Find }H(x)\\
     &\text{2. Find }[\begin{matrix}p_Y(b_0)&p_Y(b_1)&\dots&p_Y(b_j)\end{matrix}] = [\begin{matrix}p_X(a_0)&p_X(a_1)&\dots&p_X(a_i)\end{matrix}]\times\mathbf{P}\\
-    &\text{3. Multiply each row in $\textbf{P}$ by $p_X(a_i)$ since $p_{XY}(x_i,y_i)=P(y_i|x_i)P(x_i)$}\\
+    &\text{3. Multiply each row in $\textbf{P}$ by $p_X(a_i)$ since $p_{XY}(a_i,b_i)=P(b_i|a_i)P(a_i)$}\\
     &\text{4. Find $H(x,y)$ using each element from (3.)}\\
     &\text{5. Find }H(x|y)=H(x,y)-H(y)\\
-    &\text{6. Find }I(y;x)=H(x)-H(x|y)\\
+    &\text{6. Find }I(x;y)=H(x)-H(x|y)\\
 \end{align*}
 ```
 
 <!-- MATH END -->
+
+Example of step **3**:
+
+$$
+\mathbf{P_{XY}}=\left[\begin{matrix}
+    P(y_1|x_1) P(x_1) & P(y_2|x_1) P(x_1) & \dots\\
+    P(y_1|x_2) P(x_2) & P(y_2|x_2) P(x_2) & \dots\\
+    \vdots            & \vdots            &\ddots
+\end{matrix}\right]
+$$
 
 ### Channel types
 
@@ -1150,6 +1201,8 @@ Output has probability distribution $p_Y(b_j)=P(y=b_j)$
     R_b &< C \text{ for error-free transmission}
 \end{align*}
 ```
+
+**Note that the channel capacity is realized when the channel inputs are uniformly distributed** (i.e. $P(x_1)=P(x_2)=\dots=P(x_N)=\frac{1}{N}$)
 
 <!-- MATH END -->
 
@@ -1394,7 +1447,14 @@ Set $x_1,x_2$ as information bits. Express $x_3,x_4,x_5$ in terms of $x_1,x_2$.
 
 - Transfer function in complex envelope form $\tilde{h}(t)$ should be divided by two.
 - Convolutions: do not forget width when using graphical method
-- todo: add more items to check
+- $2W$ for rectangle functions
+- Scale sampled spectrum by $f_s$
+- $2f_c$ for spectrum after IF mixing.
+- Square transfer function for PSD $G_y(f)=|H(f)|^\mathbf{2}G_x(f)$
+- Square besselJ function for FM power $|J_n(\beta)|^\mathbf{2}$
+- Bandwidth: only consider positive frequencies (so the bandwidth of an AM signal will be the range from the lowest to greatest sideband frequency. For a rectangular function, it will be from 0 to W).
+- TODO: add more items to check
+- TODO: add some graphics for these checklist items
 
 <style>
 @media print{
